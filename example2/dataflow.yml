@@ -1,0 +1,23 @@
+nodes:
+  - id: publisher
+    path: CameraPublisher.py
+    outputs:
+      - image
+      - imageshape
+    inputs:
+      tick: dora/timer/millis/1000
+
+  - id: YOLO
+    path: YOLO.py
+    inputs:
+      image: publisher/image
+      imageshape: publisher/imageshape
+    outputs:
+      - face
+
+  - id: GUI
+    path: GUI.py
+    inputs:
+      face: YOLO/face
+      image: publisher/image
+      imageshape: publisher/imageshape

@@ -1,0 +1,12 @@
+nodes:
+  - id: publisher
+    path: BasicPublisher.py
+    outputs:
+      - counter
+    inputs:
+      tick: dora/timer/millis/1000
+
+  - id: subscriber
+    path: BasicSubscriber.py
+    inputs:
+      counter: publisher/counter
